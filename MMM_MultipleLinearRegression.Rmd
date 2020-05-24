@@ -1,0 +1,38 @@
+---
+title: "MMM_MarketMixModeling_MultipleLinearRegression"
+author: "RohitDhankar"
+date: "24/05/2020"
+output: pdf_document
+---
+
+This is sample code for the task being done along with Rohan Mathur = https://github.com/RohanMathur17   
+https://github.com/digital-cognition-co-in/DigitalCognition/issues/24    
+
+
+```{r}
+library(readr)
+LungCapData <- read_csv("LungCapData.csv")
+#View(LungCapData)
+names(LungCapData);head(LungCapData)
+#
+
+```
+
+
+```{r}
+
+
+```
+
+
+```{r}
+
+
+```
+
+
+```{r}
+
+
+```
+
