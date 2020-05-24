@@ -1,4 +1,4 @@
-LungCap(cc),Age( years),Height(inches),Smoke,Gender,Caesarean
+LungCap_cc,Age_years,Height_inches,Smoke,Gender,Caesarean
 6.475,6,62.1,no,male,no
 10.125,18,74.7,yes,female,no
 9.55,16,69.7,no,female,yes

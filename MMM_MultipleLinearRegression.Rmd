@@ -12,21 +12,39 @@ https://github.com/digital-cognition-co-in/DigitalCognition/issues/24
 ```{r}
 library(readr)
 LungCapData <- read_csv("LungCapData.csv")
-#View(LungCapData)
+attach(LungCapData)
+View(LungCapData)
 names(LungCapData);head(LungCapData)
 #
 
 ```
+     
+     
+For the Multiple Linear Regression that we are performing the - Dependent Variable == LungCapacity in CC  
+The Multiple Independent vartiables are == Age() , Height() , Smoke() , Gender() , Caesarean()   
 
-
+We fit initial Linear Regression Model with Two Independent variables == Age() and Height()     
+    
+    
 ```{r}
-
+init_multiple_linear_m <- lm(LungCap_cc ~ Age_years + Height_inches)
+#typeof(init_multiple_linear_m) # list
+#class(init_multiple_linear_m) # lm - Linear Model 
+summary(init_multiple_linear_m)
+# the - Multiple R-squared:  0.843 -- 84.3% Variability in LUNG CAPACITY can be 
+# explained by the linear relationship between - Age_years + Height_inches and LUNG CAPACITY
 
 ```
+  
+  
+CORRELATION seen through SCATTER PLOTS    
+
+
+As seen below the - Height_inches is Positivly Correlated to Lung Capacity   
 
 
 ```{r}
-
+plot(LungCap_cc~Height_inches)
 
 ```
 
