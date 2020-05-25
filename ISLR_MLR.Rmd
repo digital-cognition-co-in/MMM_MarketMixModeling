@@ -1,0 +1,55 @@
+---
+title: "ISLR_MultipleLinearRegression"
+author: "RohitDhankar"
+date: "25/05/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r}
+
+library(MASS);data(Boston);attach(Boston);names(Boston);head(Boston)#;View(Boston)
+summary(Boston)
+set.seed(987)
+lm.fit = lm(medv ~ lstat)
+lm.fit
+summary(lm.fit) 
+#  
+
+```
+
+Multiple R-squared:  0.5441 - Which means only 54.41% Variability in medv == median   
+house value  , can be explained by the linear relationship between - medv and lstat == percent of    
+households with low socioeconomic status   
+
+
+
+```{r}
+```  
+
+       
+           
+                
+                      
+                      
+> fix
+function (x, ...) 
+{
+    subx <- substitute(x)
+    if (is.name(subx)) 
+        subx <- deparse(subx)
+    if (!is.character(subx) || length(subx) != 1L) 
+        stop("'fix' requires a name")
+    parent <- parent.frame()
+    if (exists(subx, envir = parent, inherits = TRUE)) 
+        x <- edit(get(subx, envir = parent), title = subx, ...)
+    else {
+        x <- edit(function() {
+        }, title = subx, ...)
+        environment(x) <- .GlobalEnv
+    }
+    assign(subx, x, envir = .GlobalEnv)
+}
+<bytecode: 0x55e8533d3e98>
+<environment: namespace:utils>
