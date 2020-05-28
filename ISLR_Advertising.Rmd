@@ -1,0 +1,30 @@
+---
+title: "ISLR_Advertising"
+author: "RohitDhankar"
+date: "28/05/2020"
+output:
+  pdf_document: default
+  html_document: default
+
+---
+Source of the code and the data is the Book = http://faculty.marshall.usc.edu/gareth-james/ISL/   
+
+
+```{r}
+
+library(readr)
+ad_data <- read_csv("Advertising.csv")
+attach(ad_data);View(ad_data);names(ad_data);head(ad_data)
+
+
+```
+
+```{r}
+#init_multiple_linear_m <- lm(LungCap_cc ~ Age_years + Height_inches)
+#typeof(init_multiple_linear_m) # list
+#class(init_multiple_linear_m) # lm - Linear Model 
+#summary(init_multiple_linear_m)
+# the - Multiple R-squared:  0.843 -- 84.3% Variability in LUNG CAPACITY can be 
+# explained by the linear relationship between - Age_years + Height_inches and LUNG CAPACITY
+
+```
