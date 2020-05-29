@@ -13,18 +13,62 @@ Source of the code and the data is the Book = http://faculty.marshall.usc.edu/ga
 ```{r}
 
 library(readr)
+library(ggplot2)
 ad_data <- read_csv("Advertising.csv")
 attach(ad_data);View(ad_data);names(ad_data);head(ad_data)
+# TV , Radio , Newspapoer Budgets are predictors, independent variables, or just - features.
 
 
 ```
 
 ```{r}
-#init_multiple_linear_m <- lm(LungCap_cc ~ Age_years + Height_inches)
-#typeof(init_multiple_linear_m) # list
-#class(init_multiple_linear_m) # lm - Linear Model 
-#summary(init_multiple_linear_m)
-# the - Multiple R-squared:  0.843 -- 84.3% Variability in LUNG CAPACITY can be 
-# explained by the linear relationship between - Age_years + Height_inches and LUNG CAPACITY
+simple_lm_fit <- lm(Sales ~ TV )
+init_multiple_linear_m <- lm(Sales ~ TV + Radio + Newspaper)
+typeof(init_multiple_linear_m) # list
+class(init_multiple_linear_m) # lm - Linear Model 
+summary(init_multiple_linear_m)
+# the - Adjusted R-squared:  0.8956 -- 89.56% Variability in Sales can be 
+# explained by the linear relationship between - TV + Radio regressed on to Sales
 
 ```
+
+```{r}
+
+# Seen below a Scatter plot of Sales - 
+# its Similar to the - lm_plot_sales_tv , besides the Regression Line 
+ggplot(ad_data,aes(y=Sales,x=TV , color = Sales))+geom_point()
+# 
+lm_plot_sales_tv <- ggplot(ad_data, aes(TV, Sales , color = Sales)) + geom_point() + geom_smooth(method = "lm")
+print(lm_plot_sales_tv + ggtitle("Simple Linear Regression Plot - TV on to Sales "))
+# up here -- color = Sales -- is just a notional usage , as we would rather use it with a factor variable
+# 
+lm_plot_sales_radio <- ggplot(ad_data, aes(Radio, Sales , color = Sales)) + geom_point() + geom_smooth(method = "lm")
+print(lm_plot_sales_radio + ggtitle("Simple Linear Regression Plot - Radio on to Sales "))
+# 
+lm_plot_sales_newsp <- ggplot(ad_data, aes(Newspaper, Sales , color = Sales)) + geom_point() + geom_smooth(method = "lm")
+print(lm_plot_sales_newsp + ggtitle("Simple Linear Regression Plot - Newspaper on to Sales "))
+#
+mlr_plot_sales_all <- ggplot(ad_data) + 
+  geom_jitter(aes(Newspaper,Sales), colour="blue") + geom_smooth(aes(Newspaper,Sales), method=lm, se=FALSE) +
+  geom_jitter(aes(Radio,Sales), colour="green") + geom_smooth(aes(Radio,Sales), method=lm, se=FALSE) +
+  geom_jitter(aes(TV,Sales), colour="red") + geom_smooth(aes(TV,Sales), method=lm, se=FALSE) +
+  labs(x = "Newspaper-Blue, Radio-Green , TV-Red", y = "Sales ~ TV + Radio + Newspaper")
+print(mlr_plot_sales_all + ggtitle("Simple Linear Regression Plot - Newspaper on to Sales "))
+#
+cor_df <- subset(ad_data, select = c(TV,Radio,Newspaper,Sales))
+corr_df_sales <- cor(cor_df, method = c("pearson", "kendall", "spearman"))
+#
+library(corrplot)
+corrplot(corr_df_sales, method = "circle")
+#
+corrplot(corr_df_sales, method = "square")
+#
+
+
+
+
+
+
+```
+
+
